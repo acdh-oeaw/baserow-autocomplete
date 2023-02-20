@@ -1,3 +1,4 @@
+acdh-baserow-client
 coverage
 fastapi[all]
 fastapi-cache2
