@@ -1,4 +1,4 @@
-acdh-baserow-client
+acdh-baserow-pyutils
 coverage
 fastapi[all]
 fastapi-cache2
