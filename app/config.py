@@ -1,3 +1,9 @@
+import os
+
+BASEROW_URL = "https://baserow.acdh-dev.oeaw.ac.at/api/"
+BASEROW_USER = os.environ.get('BASEROW_USER')
+BASEROW_PW = os.environ.get('BASEROW_PW')
+
 DATABASES = [
     {
         "db_name": "EMT",

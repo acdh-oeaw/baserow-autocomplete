@@ -6,6 +6,9 @@ jobs:
   test:
     name: Test Application
     runs-on: ubuntu-latest
+    env:
+      BASEROW_USER: ${{secrets.BASEROW_USER}}
+      BASEROW_PW: ${{secrets.BASEROW_PW}}
     steps:
     - name: Check out source repository
       uses: actions/checkout@v3
