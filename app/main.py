@@ -16,7 +16,7 @@ async def root(request: Request):
         {
             "db_name": x["db_name"],
             "db_id": x["db_id"],
-            "endpoint": f"{request.url._url}db/{x['db_id']}",
+            "endpoint": f"{request.url._url}db/{x['db_id']}/tables",
         }
         for x in DATABASES
     ]
@@ -28,7 +28,7 @@ async def root(request: Request):
     }
 
 
-@app.get("/db/{db_id}")
+@app.get("/db/{db_id}/tables")
 @cache(expire=60 * 60)
 async def list_tables(db_id: str):
     result = None
@@ -45,6 +45,14 @@ async def list_tables(db_id: str):
     else:
         detail_msg = f"no baserow database with ID: <{db_id}> defined in config.py"
         raise HTTPException(status_code=404, detail=detail_msg)
+
+
+@app.get("/db/{db_id}/tables/{table_id}/fields")
+@cache(expire=60 * 60)
+async def list_ac_fields(db_id: str, table_id: str):
+    client = BaseRowClient(BASEROW_USER, BASEROW_PW, "db_token", br_base_url=BASEROW_URL)
+    fields = client.list_fields(table_id)
+    return fields
 
 
 @app.on_event("startup")
