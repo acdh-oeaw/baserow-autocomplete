@@ -30,13 +30,18 @@ async def root(request: Request):
 
 
 @app.get("/ac/{db_id}/{endpoint}")
-async def query_endpoint(db_id: str, endpoint: str):
+async def query_endpoint(db_id: str, endpoint: str, q: str):
     try:
         cur_db = DATABASES[db_id]
     except KeyError:
         detail_msg = f"no baserow database with ID: <{db_id}> defined in config.py"
         raise HTTPException(status_code=404, detail=detail_msg)
-    return cur_db["endpoints"][endpoint]
+    cur_conf = cur_db["endpoints"][endpoint]
+    br_table_id = cur_conf["table_id"]
+    query_field_id = cur_conf["search_field_id"]
+    client = BaseRowClient(BASEROW_USER, BASEROW_PW, "db_token", br_base_url=BASEROW_URL)
+    result = client.search_rows(br_table_id, q, query_field_id, lookup_type="contains")
+    return result
 
 
 @app.get("/db/{db_id}/tables")

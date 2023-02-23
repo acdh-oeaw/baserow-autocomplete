@@ -13,11 +13,13 @@ DATABASES = {
             "persons": {
                 "table_id": "1513",
                 "search_field_name": "name",
+                "search_field_id": "12741",
                 "id_field_name": "emt_id",
             },
             "places": {
                 "table_id": "1514",
                 "search_field_name": "name",
+                "search_field_id": "12745",
                 "id_field_name": "emt_id",
             },
         },
@@ -30,11 +32,13 @@ DATABASES = {
             "persons": {
                 "table_id": "1484",
                 "search_field_name": "name",
+                "search_field_id": "12492",
                 "id_field_name": "amp_id",
             },
             "places": {
                 "table_id": "1483",
                 "search_field_name": "name",
+                "search_field_id": "12489",
                 "id_field_name": "amp_id",
             },
         },
@@ -47,11 +51,13 @@ DATABASES = {
             "persons": {
                 "table_id": "1474",
                 "search_field_name": "name",
+                "search_field_id": "12428",
                 "id_field_name": "frd_id",
             },
             "places": {
                 "table_id": "1468",
                 "search_field_name": "name",
+                "search_field_id": "12396",
                 "id_field_name": "frd_id",
             },
         },
