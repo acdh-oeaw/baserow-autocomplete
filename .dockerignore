@@ -1,6 +1,8 @@
 myenv
 env
 db.sqlite3
-.env
+*.env
 env.default
 env.secret
+dev.env
+secret.env
