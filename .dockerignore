@@ -6,3 +6,5 @@ env.default
 env.secret
 dev.env
 secret.env
+htmlcov
+/.*

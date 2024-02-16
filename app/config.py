@@ -62,4 +62,23 @@ DATABASES = {
             },
         },
     },
+    "b-vg":
+    {
+        "db_name": "bundesverfassung",
+        "db_id": "421",
+        "endpoints": {
+            "persons": {
+                "table_id": "2290",
+                "search_field_name": "name",
+                "search_field_id": "20812",
+                "id_field_name": "bv_id",
+            },
+            "document": {
+                "table_id": "2289",
+                "search_field_name": "doc_title",
+                "search_field_id": "20804",
+                "id_field_name": "bv_id",
+            },
+        },
+    },
 }
