@@ -23,7 +23,7 @@ DATABASES = {
                 "id_field_name": "project_id"
             }
         },
-        "zotero": "https://api.zotero.org/groups/1085708/items"
+        "zotero": "https://api.zotero.org/groups/5456180/items"
     },
     "emt":
     {

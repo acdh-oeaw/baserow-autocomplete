@@ -27,12 +27,13 @@ def test_correct_endpoint_number():
 def test_ac_endpoint():
     db_id = "test"
     endpoints = [key for key, _ in DATABASES[db_id]["endpoints"].items()]
-    for x in endpoints:
-        with TestClient(app) as client:
-            response = client.get(f"/ac/{db_id}/{x}")
-            assert response.status_code == 422
-            response = client.get(f"/ac/{db_id}/{x}?q=A")
-            assert response.status_code == 200
+    for format in ["original", "teicompleter", "select2"]:
+        for x in endpoints:
+            with TestClient(app) as client:
+                response = client.get(f"/ac/{db_id}/{x}")
+                assert response.status_code == 422
+                response = client.get(f"/ac/{db_id}/{x}?q=A&format={format}")
+                assert response.status_code == 200
 
 
 def test_nonexiting_ac_endpoint():
@@ -49,3 +50,10 @@ def test_list_tables_endpoint():
     with TestClient(app) as client:
         response = client.get("/db/blödsinn/tables")
         assert response.status_code == 404
+
+
+def test_zotero_ep():
+    for format in ["original", "teicompleter", "select2"]:
+        with TestClient(app) as client:
+            response = client.get(f"/ac/test/zotero?q=Digital&format={format}")
+            assert response.status_code == 200
