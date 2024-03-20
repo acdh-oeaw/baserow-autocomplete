@@ -5,8 +5,38 @@ BASEROW_USER = os.environ.get("BASEROW_USER")
 BASEROW_PW = os.environ.get("BASEROW_PW")
 
 DATABASES = {
-    "test":
-    {
+    "coins": {
+        "db_name": "Khell-Fröhlich",
+        "db_id": "535",
+        "endpoints": {
+            "persons": {
+                "table_id": "3225",
+                "search_field_name": "name",
+                "search_field_id": "29197",
+                "id_field_name": "project_id",
+            },
+            "artifacts": {
+                "table_id": "3219",
+                "search_field_name": "description",
+                "search_field_id": "29197",
+                "id_field_name": "project_id",
+            },
+            "books": {
+                "table_id": "3220",
+                "search_field_name": "abbreviation",
+                "search_field_id": "29127",
+                "id_field_name": "project_id",
+            },
+            "places": {
+                "table_id": "3226",
+                "search_field_name": "name",
+                "search_field_id": "29208",
+                "id_field_name": "project_id",
+            },
+        },
+        "zotero": "https://api.zotero.org/groups/1085708/items",
+    },
+    "test": {
         "db_name": "Test DB",
         "db_id": "538",
         "endpoints": {
@@ -14,19 +44,18 @@ DATABASES = {
                 "table_id": "3284",
                 "search_field_name": "name",
                 "search_field_id": "29742",
-                "id_field_name": "project_id"
+                "id_field_name": "project_id",
             },
             "places": {
                 "table_id": "3285",
                 "search_field_name": "name",
                 "search_field_id": "29745",
-                "id_field_name": "project_id"
-            }
+                "id_field_name": "project_id",
+            },
         },
-        "zotero": "https://api.zotero.org/groups/5456180/items"
+        "zotero": "https://api.zotero.org/groups/5456180/items",
     },
-    "emt":
-    {
+    "emt": {
         "db_name": "EMT",
         "db_id": "278",
         "endpoints": {
@@ -44,8 +73,7 @@ DATABASES = {
             },
         },
     },
-    "amp":
-    {
+    "amp": {
         "db_name": "AMP",
         "db_id": "274",
         "endpoints": {
@@ -63,8 +91,7 @@ DATABASES = {
             },
         },
     },
-    "frd":
-    {
+    "frd": {
         "db_name": "Freud Edition",
         "db_id": "270",
         "endpoints": {
@@ -82,8 +109,7 @@ DATABASES = {
             },
         },
     },
-    "b-vg":
-    {
+    "b-vg": {
         "db_name": "bundesverfassung",
         "db_id": "421",
         "endpoints": {
