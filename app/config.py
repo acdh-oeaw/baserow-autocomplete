@@ -5,6 +5,26 @@ BASEROW_USER = os.environ.get("BASEROW_USER")
 BASEROW_PW = os.environ.get("BASEROW_PW")
 
 DATABASES = {
+    "test":
+    {
+        "db_name": "Test DB",
+        "db_id": "538",
+        "endpoints": {
+            "persons": {
+                "table_id": "3284",
+                "search_field_name": "name",
+                "search_field_id": "29742",
+                "id_field_name": "project_id"
+            },
+            "places": {
+                "table_id": "3285",
+                "search_field_name": "name",
+                "search_field_id": "29745",
+                "id_field_name": "project_id"
+            }
+        },
+        "zotero": "https://api.zotero.org/groups/5456180/items"
+    },
     "emt":
     {
         "db_name": "EMT",
