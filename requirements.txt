@@ -1,6 +1,6 @@
-acdh-baserow-pyutils
-coverage
-fastapi[all]
-fastapi-cache2
-flake8
-pytest
+acdh-baserow-pyutils>=0.8,<1
+coverage>=7.4.4,<8
+fastapi[all]>=0.110.0,<1
+fastapi-cache2>=0.2.1,<1
+flake8>=7.0.0,<8
+pytest>=8.1.1,<9
