@@ -22,7 +22,8 @@ DATABASES = {
                 "search_field_id": "29745",
                 "id_field_name": "project_id"
             }
-        }
+        },
+        "zotero": "https://api.zotero.org/groups/1085708/items"
     },
     "emt":
     {

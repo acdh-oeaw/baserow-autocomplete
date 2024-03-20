@@ -1,3 +1,4 @@
+import requests
 from typing import Union
 from fastapi import FastAPI, HTTPException, Request
 from fastapi_cache import FastAPICache
@@ -7,6 +8,8 @@ from fastapi_cache.decorator import cache
 from acdh_baserow_pyutils import BaseRowClient
 from app.config import DATABASES, BASEROW_PW, BASEROW_USER, BASEROW_URL
 from app.utils import make_ac_uris, populate_baserow_response
+from app.zotero_utils import populate_zotero_response
+
 
 app = FastAPI()
 
@@ -20,11 +23,21 @@ async def root(request: Request):
             "endpoint": f"{request.url._url}db/{db_key}/tables",
             "autocompletes": [
                 make_ac_uris(db_key, key, request.url._url)
-                for key, value in x["endpoints"].items()
+                for key, _ in x["endpoints"].items()
             ],
         }
         for db_key, x in DATABASES.items()
     ]
+    for x in endpoints:
+        db_key = x["db_id"]
+        print(db_key)
+        try:
+            DATABASES[db_key]["zotero"]
+            print("###################")
+        except KeyError:
+            continue
+        zotero_ep = make_ac_uris(db_key, "zotero", request.url._url)
+        x["autocompletes"].append(zotero_ep)
 
     return {
         "message": "A baserow autocomplete service",
@@ -42,6 +55,13 @@ async def query_endpoint(
     except KeyError:
         detail_msg = f"no baserow database with ID: <{db_id}> defined in config.py"
         raise HTTPException(status_code=404, detail=detail_msg)
+    if endpoint == "zotero":
+        zotero_api = cur_db["zotero"]
+        url = f"{zotero_api}?q={q}"
+        r = requests.get(url)
+        data = r.json()
+        result = populate_zotero_response(data, format=format)
+        return result
     cur_conf = cur_db["endpoints"][endpoint]
     br_table_id = cur_conf["table_id"]
     query_field_id = cur_conf["search_field_id"]
