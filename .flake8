@@ -6,3 +6,4 @@ exclude =
     build,
     env
     play.py
+    venv/
