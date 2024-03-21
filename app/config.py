@@ -113,7 +113,7 @@ DATABASES = {
         "db_name": "bundesverfassung",
         "db_id": "421",
         "endpoints": {
-            "persons": {
+            "person": {
                 "table_id": "2290",
                 "search_field_name": "name",
                 "search_field_id": "20812",
@@ -123,6 +123,12 @@ DATABASES = {
                 "table_id": "2289",
                 "search_field_name": "doc_title",
                 "search_field_id": "20804",
+                "id_field_name": "bv_id",
+            },
+            "term": {
+                "table_id": "2589",
+                "search_field_name": "name",
+                "search_field_id": "23726",
                 "id_field_name": "bv_id",
             },
         },
